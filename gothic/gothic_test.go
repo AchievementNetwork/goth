@@ -9,9 +9,9 @@ import (
 	"testing"
 
 	"github.com/gorilla/sessions"
-	"github.com/markbates/goth"
-	. "github.com/markbates/goth/gothic"
-	"github.com/markbates/goth/providers/faux"
+	"github.com/AchievementNetwork/goth"
+	. "github.com/AchievementNetwork/goth/gothic"
+	"github.com/AchievementNetwork/goth/providers/faux"
 	"github.com/stretchr/testify/assert"
 )
 

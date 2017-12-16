@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/http"
 	"strconv"
-	"github.com/markbates/goth"
+	"github.com/AchievementNetwork/goth"
 	"golang.org/x/oauth2"
 	"fmt"
 	"io/ioutil"

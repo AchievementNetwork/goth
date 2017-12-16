@@ -10,7 +10,7 @@ import (
 	"net/url"
 
 	"fmt"
-	"github.com/markbates/goth"
+	"github.com/AchievementNetwork/goth"
 	"golang.org/x/oauth2"
 )
 

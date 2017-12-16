@@ -1,8 +1,8 @@
 package battlenet_test
 
 import (
-	"github.com/markbates/goth"
-	"github.com/markbates/goth/providers/battlenet"
+	"github.com/AchievementNetwork/goth"
+	"github.com/AchievementNetwork/goth/providers/battlenet"
 	"github.com/stretchr/testify/assert"
 	"os"
 	"testing"
