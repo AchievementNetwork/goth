@@ -57,6 +57,16 @@ func (p *Provider) SetName(name string) {
 	p.providerName = name
 }
 
+// SetTokenURL is to update the token URL of the provider
+func (p *Provider) SetTokenURL(tokenURL string) {
+	p.config.Endpoint.TokenURL = tokenURL
+}
+
+// SetAuthURL is to update the auth URL of the provider
+func (p *Provider) SetAuthURL(authURL string) {
+	p.config.Endpoint.AuthURL = authURL
+}
+
 // Client returns an http client.
 func (p *Provider) Client() *http.Client {
 	return goth.HTTPClientWithFallBack(p.HTTPClient)
