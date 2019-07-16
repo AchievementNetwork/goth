@@ -38,13 +38,14 @@ func New(clientKey, secret, callbackURL string, scopes ...string) *Provider {
 
 // Provider is the implementation of `goth.Provider` for accessing Google+.
 type Provider struct {
-	ClientKey    string
-	Secret       string
-	CallbackURL  string
-	HTTPClient   *http.Client
-	config       *oauth2.Config
-	prompt       oauth2.AuthCodeOption
-	providerName string
+	ClientKey       string
+	Secret          string
+	CallbackURL     string
+	HTTPClient      *http.Client
+	config          *oauth2.Config
+	prompt          oauth2.AuthCodeOption
+	providerName    string
+	endpointProfile string
 }
 
 // Name is the name used to retrieve this provider later.
@@ -62,9 +63,9 @@ func (p *Provider) SetTokenURL(tokenURL string) {
 	p.config.Endpoint.TokenURL = tokenURL
 }
 
-// SetAuthURL is to update the auth URL of the provider
-func (p *Provider) SetAuthURL(authURL string) {
-	p.config.Endpoint.AuthURL = authURL
+// SetEndpointProfile is to update the endpoint profile URL of the provider
+func (p *Provider) SetEndpointProfile(endpointProfile string) {
+	p.endpointProfile = endpointProfile
 }
 
 // Client returns an http client.
