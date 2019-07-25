@@ -33,6 +33,7 @@ func New(clientKey, secret, callbackURL string, scopes ...string) *Provider {
 		providerName: "clever",
 	}
 	p.config = newConfig(p, scopes)
+	p.endpointProfile = endpointProfile
 	return p
 }
 
