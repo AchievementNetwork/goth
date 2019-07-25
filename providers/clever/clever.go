@@ -33,18 +33,20 @@ func New(clientKey, secret, callbackURL string, scopes ...string) *Provider {
 		providerName: "clever",
 	}
 	p.config = newConfig(p, scopes)
+	p.endpointProfile = endpointProfile
 	return p
 }
 
 // Provider is the implementation of `goth.Provider` for accessing Google+.
 type Provider struct {
-	ClientKey    string
-	Secret       string
-	CallbackURL  string
-	HTTPClient   *http.Client
-	config       *oauth2.Config
-	prompt       oauth2.AuthCodeOption
-	providerName string
+	ClientKey       string
+	Secret          string
+	CallbackURL     string
+	HTTPClient      *http.Client
+	config          *oauth2.Config
+	prompt          oauth2.AuthCodeOption
+	providerName    string
+	endpointProfile string
 }
 
 // Name is the name used to retrieve this provider later.
@@ -55,6 +57,16 @@ func (p *Provider) Name() string {
 // SetName is to update the name of the provider (needed in case of multiple providers of 1 type)
 func (p *Provider) SetName(name string) {
 	p.providerName = name
+}
+
+// SetTokenURL is to update the token URL of the provider
+func (p *Provider) SetTokenURL(tokenURL string) {
+	p.config.Endpoint.TokenURL = tokenURL
+}
+
+// SetEndpointProfile is to update the endpoint profile URL of the provider
+func (p *Provider) SetEndpointProfile(endpointProfile string) {
+	p.endpointProfile = endpointProfile
 }
 
 // Client returns an http client.
@@ -93,7 +105,7 @@ func (p *Provider) FetchUser(session goth.Session) (goth.User, error) {
 		return user, fmt.Errorf("%s cannot get user information without accessToken", p.providerName)
 	}
 
-	response, err := p.Client().Get(endpointProfile + "?access_token=" + url.QueryEscape(sess.AccessToken))
+	response, err := p.Client().Get(p.endpointProfile + "?access_token=" + url.QueryEscape(sess.AccessToken))
 	if err != nil {
 		return user, err
 	}
