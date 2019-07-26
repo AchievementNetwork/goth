@@ -64,6 +64,11 @@ func (p *Provider) SetTokenURL(tokenURL string) {
 	p.config.Endpoint.TokenURL = tokenURL
 }
 
+// SetAuthURL is to update the AuthURL of the provider
+func (p *Provider) SetAuthURL(authURL string) {
+	p.config.Endpoint.AuthURL = authURL
+}
+
 // SetEndpointProfile is to update the endpoint profile URL of the provider
 func (p *Provider) SetEndpointProfile(endpointProfile string) {
 	p.endpointProfile = endpointProfile
